@@ -1,18 +1,25 @@
+// utils/guardarEnSheet.js
+
 export async function guardarEnSheet({ origen, usuario_id, mensaje_usuario, respuesta_bot, interacciones }) {
+  const endpoint = process.env.SHEETDB_URL;
+
+  if (!endpoint) {
+    console.warn("⚠️ SHEETDB_URL no está definido en el entorno");
+    return;
+  }
+
+  const payload = {
+    data: [{
+      timestamp: new Date().toISOString(),
+      origen,
+      usuario_id,
+      mensaje_usuario,
+      respuesta_bot,
+      interacciones
+    }]
+  };
+
   try {
-    const endpoint = "https://sheetdb.io/api/v1/sufujf7wiv9p8";
-
-    const payload = {
-      data: [{
-        timestamp: new Date().toISOString(),
-        origen,
-        usuario_id,
-        mensaje_usuario,
-        respuesta_bot,
-        interacciones
-      }]
-    };
-
     const response = await fetch(endpoint, {
       method: "POST",
       headers: { "Content-Type": "application/json" },

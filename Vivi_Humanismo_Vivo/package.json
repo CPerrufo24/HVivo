@@ -1,5 +1,5 @@
 {
-  "name": "3clue-chatbot-backend",
+  "name": "vivi-humanismo-backend",
   "version": "1.0.0",
   "type": "module",
   "main": "api/chat.js",
@@ -8,7 +8,8 @@
     "start": "node api/chat.js"
   },
   "dependencies": {
-    "openai": "^5.12.2",
-    "axios": "^1.6.7"
+    "axios": "^1.6.7",
+    "dotenv": "^17.2.1",
+    "openai": "^5.12.2"
   }
 }

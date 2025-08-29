@@ -1,3 +1,7 @@
+
+// api/chat.js
+
+import "dotenv/config";
 import { OpenAI } from "openai";
 import { guardarEnSheet } from "../utils/guardarEnSheet.js";
 
@@ -53,3 +57,4 @@ export default async function handler(req, res) {
     res.status(500).json({ error: "Error interno del servidor", detalle: error.message });
   }
 }
+
