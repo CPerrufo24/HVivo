@@ -421,7 +421,7 @@ async function sendMessageToVivi_HumanismoVivo(message) {
   conversationHistory.push({ role: "user", content: message });
 
   try {
-    const response = await fetch("https://3clue.vercel.app/api/chat", {
+    const response = await fetch("https://humanismo-vivo.vercel.app/api/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ history: conversationHistory })
@@ -468,4 +468,5 @@ userInput.addEventListener('keypress', (e) => {
 
 
 </html>
+
 
