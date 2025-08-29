@@ -19443,7 +19443,7 @@ li.has-dropdown:hover .submenu {
   height: 60px;
   border-radius: 50%;
   border: none;
-  background: var(--primary-blue);
+  background: white;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   display: flex;
