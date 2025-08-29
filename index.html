@@ -18,6 +18,7 @@
     <meta name="theme-color" content="#e4a39d">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
 </head>
 
@@ -361,6 +362,23 @@
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <!-- main js here -->
     <script src="assets/js/main.js"></script>
+
+      <!-- Botón flotante -->
+         <button id="chatbot-toggle">
+          <img src="TU_IMG.png" alt="Vivi_HumanismoVivo" />
+         </button>
+
+      <!-- Ventana del chatbot -->
+         <div id="chatbot">
+             <div id="chatbot-header">Vivi_HumanismoVivo</div>
+             <div id="chatbot-messages"></div>
+            <div id="chatbot-input">
+        <input type="text" id="user-input" placeholder="Escribe un mensaje...">
+        <button id="send-btn">Enviar</button>
+             </div>
+         </div>
+
 </body>
+
 
 </html>
