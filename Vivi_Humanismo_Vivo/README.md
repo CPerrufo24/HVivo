@@ -1,68 +1,70 @@
-🧠 3Clue Chatbot Backend
-Backend serverless para conectar bots personalizados de Poe con páginas web externas. Este proyecto está optimizado para Vercel y permite adaptar la personalidad del bot según el cliente.
 
-🚀 ¿Qué hace este backend?
-Recibe mensajes desde el frontend
+# 🤖 Vivi_Humanismo_Vivo – Backend del chatbot guía para Humanismo Vivo A.C.
 
-Los envía al bot alojado en Poe (por nombre)
+Este repositorio contiene el backend del chatbot **VIVI**, asistente virtual de la Unidad de Diagnóstico Humanismo Vivo A.C. Está diseñado para guiar al usuario en el proceso de agendar estudios médicos, ofreciendo respuestas claras, rápidas y sin complicaciones.
 
-Devuelve la respuesta generada
+---
 
-Soporta historial conversacional
+## 🧬 Descripción del bot
 
-Incluye CORS para conexión segura con dominios externos
+VIVI es un chatbot guía, entrenado para:
 
-📦 Estructura del proyecto
+- Detectar el estudio solicitado por el usuario (más de 1500 disponibles)
+- Generar enlaces personalizados con parámetros precargados
+- Brindar información básica sobre preparación, duración y disponibilidad
+- Redirigir al usuario a atención humana si lo solicita
+
+El bot está entrenado en Poe y desplegado en Vercel. No realiza diagnósticos ni ventas directas, pero sí facilita el acceso a servicios médicos confiables.
+
+---
+
+## 📦 Estructura del backend
+
+Vivi_Humanismo_Vivo/ ├── api/ # Lógica principal del backend ├── utils/ # Funciones auxiliares ├── package.json # Dependencias y scripts ├── .env.example # Variables de entorno necesarias ├── README.md # Este archivo
+
 Código
-3clue-chatbot-backend/
-├── api/
-│   └── chat.js         # Función principal que conecta con Poe
-├── prompts/            # (Opcional) Prompts por cliente
-├── package.json
-├── vercel.json         # Configuración para deploy automático
-├── README.md
-🔧 Configuración
-Instala dependencias
 
-bash
-npm install
-Agrega tu clave de Poe Crea un archivo .env.local con:
+---
 
-env
-POE_API_KEY=tu_clave_secreta
-Verifica el nombre del bot En api/chat.js, asegúrate de que el modelo coincida:
+## 🚀 Despliegue
 
-js
-model: "3Clue_Chatbot"
-🌐 CORS y conexión con frontend
-El backend está configurado para aceptar peticiones desde:
+Este backend está preparado para ser desplegado en **Vercel**. Asegúrate de configurar las variables de entorno necesarias en el dashboard de Vercel.
 
-js
-res.setHeader("Access-Control-Allow-Origin", "https://3clue.com");
-Cambia el dominio según tu entorno.
+### Variables sugeridas:
 
-🧩 Personalización por cliente (opcional)
-Puedes agregar archivos en /prompts con reglas, tono y contexto por cliente. Luego, modifica chat.js para cargar el prompt dinámicamente.
+```env
+POE_BOT_ID=xxxxxxxxxxxxxxxx
+POE_API_KEY=xxxxxxxxxxxxxxxx
+SHEETDB_URL=https://sheetdb.io/api/v1/xxxxxx
+🔗 Enlaces importantes
+🧠 Entrenamiento en Poe: [Agregar enlace aquí]
 
-🧪 Ejemplo de uso desde frontend
-js
-const response = await fetch("https://tu-backend.vercel.app/api/chat", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ message: "Hola, ¿qué puedes hacer por mí?" }),
-});
-const data = await response.json();
-console.log(data.response);
-📤 Deploy en Vercel
-Conecta el repo en vercel.com
+🌐 Enlace de Vercel: [Agregar enlace aquí]
 
-Asegúrate de tener vercel.json en raíz:
+📋 Documentación del flujo conversacional: flujo-vivi.md
 
-json
-{
-  "version": 2,
-  "builds": [{ "src": "api/chat.js", "use": "@vercel/node" }],
-  "routes": [{ "src": "/(.*)", "dest": "api/chat.js" }]
-}
-Agrega tu POE_API_KEY como variable de entorno
+📊 Logging en SheetDB: logging-sheetdb.md
+
+📞 Contacto del cliente
+WhatsApp: https://wa.me/525564277997
+
+Correo: hvivo@hotmail.com
+
+Dirección: Circuito Vial Dr. Jorge Jiménez Cantú No. 171, Las Mercedes, Atlacomulco, Edo. de México. C.P. 50455
+
+✅ Checklist de entrega
+[x] Carpeta renombrada como Vivi_Humanismo_Vivo
+
+[x] Código limpio y sin .git interno
+
+[x] Prompt base ajustado para chatbot guía
+
+[x] Documentación modular
+
+[ ] Enlace de Poe agregado
+
+[ ] Enlace de Vercel agregado
+
+🧩 Créditos
+Desarrollado por Carlos Presuel Marrufo Arquitectura modular, entrenamiento en Poe, integración con SheetDB y despliegue en Vercel.
 
