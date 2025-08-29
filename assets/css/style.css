@@ -19458,7 +19458,7 @@ li.has-dropdown:hover .submenu {
   width: 60%;
   height: 60%;
   border-radius: 50%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 #chatbot-toggle:hover {
