@@ -31,7 +31,7 @@ export default async function handler(req, res) {
 
   try {
     const chat = await client.chat.completions.create({
-      model: "3Clue_Chatbot",
+      model: "Vivi_HumanismoVivo",
       messages: messages,
     });
 
