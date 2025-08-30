@@ -363,111 +363,118 @@
     <!-- main js here -->
     <script src="assets/js/main.js"></script>
 
-      <!-- Botón flotante -->
-         <button id="chatbot-toggle">
-          <img src="assets/Vivi_Humanisno.svg" alt="Vivi_HumanismoVivo" />
-         </button>
+<!-- Chatbot -->
+  <div class="chatbot-wrapper">
+        <!-- Botón flotante -->
+        <button id="chatbot-toggle">
+            <img src="assets/Vivi_Humanisno.svg" alt="Vivi_HumanismoVivo" />
+        </button>
 
-      <!-- Ventana del chatbot -->
-         <div id="chatbot">
-             <div id="chatbot-header">Vivi_HumanismoVivo</div>
-             <div id="chatbot-messages"></div>
+        <!-- Ventana del chatbot -->
+        <div id="chatbot" class="">
+            <div id="chatbot-header">👩‍⚕️Vivi⚕️</div>
+            <div id="chatbot-messages"></div>
             <div id="chatbot-input">
-        <input type="text" id="user-input" placeholder="Escribe un mensaje...">
-        <button id="send-btn">Enviar</button>
-             </div>
-         </div>
+                <input type="text" id="user-input" placeholder="Escribe un mensaje..." />
+                <button id="send-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-<script>
-// Elementos del DOM
-const chatbotToggle = document.getElementById('chatbot-toggle');
-const chatbot = document.getElementById('chatbot');
-const messages = document.getElementById('chatbot-messages');
-const sendBtn = document.getElementById('send-btn');
-const userInput = document.getElementById('user-input');
+    <script>
+        // Elementos del DOM
+        const chatbotToggle = document.getElementById('chatbot-toggle');
+        const chatbot = document.getElementById('chatbot');
+        const messages = document.getElementById('chatbot-messages');
+        const sendBtn = document.getElementById('send-btn');
+        const userInput = document.getElementById('user-input');
 
-// Historial de conversación
-const conversationHistory = [];
+        // Historial de conversación
+        const conversationHistory = [];
+        let chatbotOpened = false;
 
-// Función para agregar mensajes al chat
-function addMessage(text, sender) {
-  const msg = document.createElement('div');
-  msg.classList.add('message', sender);
+        // Función para agregar mensajes al chat
+        function addMessage(text, sender) {
+            const msg = document.createElement('div');
+            msg.classList.add('message', sender);
+            msg.innerHTML = sender === "bot" ? marked.parse(text) : text;
+            messages.appendChild(msg);
+            messages.scrollTop = messages.scrollHeight;
+            return msg;
+        }
 
-  if (sender === "bot") {
-    msg.innerHTML = marked.parse(text);
-  } else {
-    msg.innerText = text;
-  }
+        // Mostrar el chatbot al hacer clic
+        chatbotToggle.addEventListener('click', () => {
+            chatbot.classList.toggle('active'); // activa clase que muestra el chatbot
+            if (!chatbotOpened) {
+                const saludo = "¡Hola! Bienvenido a Unidad de Diagnóstico Humanismo Vivo A.C.. Mi nombre es Vivi, Estoy aquí para ayudarte a agendar tu estudio o resolver tus dudas. ¿En qué te puedo ayudar hoy?";
+                addMessage(saludo, "bot");
+                conversationHistory.push({ role: "assistant", content: saludo });
+                chatbotOpened = true;
+            }
+        });
 
-  messages.appendChild(msg);
-  messages.scrollTop = messages.scrollHeight;
-  return msg;
-}
+        // Enviar mensaje al backend de Vivi
+        async function sendMessageToVivi_HumanismoVivo(message) {
+            conversationHistory.push({ role: "user", content: message });
 
-// Mostrar el chatbot al hacer clic
-chatbotToggle.addEventListener('click', () => {
-  chatbot.style.display = chatbot.style.display === 'flex' ? 'none' : 'flex';
-  if (!chatbot.dataset.opened) {
-    const saludo = "¡Hola! Soy el asistente Vivi. ¿En qué puedo apoyarte hoy?";
-    addMessage(saludo, "bot");
-    conversationHistory.push({ role: "assistant", content: saludo });
-    chatbot.dataset.opened = true;
-  }
-});
+            try {
+                const response = await fetch("https://humanismo-vivo.vercel.app/api/chat", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        history: conversationHistory
+                    })
+                });
 
-// Enviar mensaje al backend de Vivi
-async function sendMessageToVivi_HumanismoVivo(message) {
-  conversationHistory.push({ role: "user", content: message });
+                if (!response.ok) throw new Error("Respuesta no válida del servidor");
 
-  try {
-    const response = await fetch("https://humanismo-vivo.vercel.app/api/chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ history: conversationHistory })
-    });
+                const data = await response.json();
+                const reply = data.response || "Lo siento, no recibí respuesta.";
+                conversationHistory.push({ role: "assistant", content: reply });
+                return reply;
 
-    if (!response.ok) throw new Error("Respuesta no válida del servidor");
+            } catch (error) {
+                console.error("Error al conectar con la API:", error);
+                return "⚠️ Hubo un problema al conectar con el asistente de Vivi.";
+            }
+        }
 
-    const data = await response.json();
-    const reply = data.response || "Lo siento, no recibí respuesta.";
-    conversationHistory.push({ role: "assistant", content: reply });
-    return reply;
+        // Evento al hacer clic en "Enviar"
+        sendBtn.addEventListener('click', async () => {
+            const text = userInput.value.trim();
+            if (text) {
+                addMessage(text, 'user');
+                userInput.value = "";
 
-  } catch (error) {
-    console.error("Error al conectar con la API:", error);
-    return "Hubo un problema al conectar con el asistente de Vivi.";
-  }
-}
+                const typingMsg = addMessage("Vivi está escribiendo...", "bot");
+                await new Promise(resolve => setTimeout(resolve, 600));
 
-// Evento al hacer clic en "Enviar"
-sendBtn.addEventListener('click', async () => {
-  const text = userInput.value.trim();
-  if (text) {
-    addMessage(text, 'user');
-    userInput.value = "";
+                const reply = await sendMessageToVivi_HumanismoVivo(text);
+                messages.removeChild(typingMsg);
+                addMessage(reply, "bot");
+            }
+        });
 
-    const typingMsg = addMessage("El asistente está escribiendo...", "bot");
-    messages.scrollTop = messages.scrollHeight;
-
-    const reply = await sendMessageToVivi_HumanismoVivo(text);
-
-    messages.removeChild(typingMsg);
-    addMessage(reply, "bot");
-  }
-});
-
-// Enviar con Enter
-userInput.addEventListener('keypress', (e) => {
-  if (e.key === "Enter") sendBtn.click();
-});
-</script>
+        // Enviar con Enter
+        userInput.addEventListener('keypress', (e) => {
+            if (e.key === "Enter") sendBtn.click();
+        });
+    </script>
 
 
 </body>
 
 
 </html>
+
 
 
 
