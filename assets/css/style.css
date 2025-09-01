@@ -90,7 +90,7 @@
   --font-primary: "Montserrat", sans-serif;
   --font-secondary: "Montserrat", sans-serif;
   --font-3: "fontawesome";
-  --font-size-b1: 14px;
+  --font-size-b1: 15px;
   --font-size-b2: 14px;
   --font-size-b3: 22px;
   --line-height-b1: 20px;
@@ -12391,6 +12391,7 @@ header.header-one.style-two.header--sticky {
 }
 .nav-area ul li a {
   color: #2963a9;
+  font-weight: 700;
 }
 
 .nav-area ul li.main-nav {
@@ -12940,7 +12941,7 @@ header.header-three .sub-dropdown .submenu.third-lvl.base {
 .banner-area-one {
   background-image: url(../images/banner/01.webp);
   position: relative;
-  height: 798px;
+  height: 600px;
   display: flex;
   align-items: center;
   border-radius: 50px;
@@ -12950,12 +12951,12 @@ header.header-three .sub-dropdown .submenu.third-lvl.base {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 650px;
+    height: 550px;
   }
 }
 @media only screen and (max-width: 1199px) {
   .banner-area-one {
-    height: 600px;
+    height: 450px;
   }
 }
 @media only screen and (max-width: 991px) {
@@ -19503,7 +19504,7 @@ li.has-dropdown:hover .submenu {
 
 /* Header del chatbot */
 #chatbot-header {
-  background: var(--primary-green);
+  background: var(--color-primary);
   color: var(--user-text);
   padding: 18px 20px;
   font-weight: 600;
@@ -19590,7 +19591,7 @@ li.has-dropdown:hover .submenu {
 
 /* Botón de envío */
 #send-btn {
-    background: var(--primary-green);
+    background: #ef5834;
     color: white;
     border: none;
     border-radius: 50%;
@@ -19607,7 +19608,7 @@ li.has-dropdown:hover .submenu {
 }
 
 #send-btn:hover {
-  background: var(--hover-green);
+  background: #ef5834;
   transform: scale(1.05);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
