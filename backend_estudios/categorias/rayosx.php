@@ -1,5 +1,5 @@
 <?php
-include 'config.php';
+include ''../../config.php'';
 include 'header.php'; // mismo head/estilos del sitio
 
 // FILTRO: debe coincidir exactamente con el valor en Airtable (espacios/acentos/mayúsculas)

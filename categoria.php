@@ -1,3 +1,4 @@
+
 <?php
 include 'config.php';
 
@@ -28,17 +29,13 @@ $estudios = $data['records'] ?? [];
 ?>
 
 <!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-<!DOCTYPE html>
 <html lang="es-MX">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/fav.png">
-    <title><?= htmlspecialchars($categoria) ?>   | Unidad de Diagnostico Humanismo Vivo A.C.</title>
+    <title><?= htmlspecialchars($categoria) ?> | Unidad de Diagnostico Humanismo Vivo A.C.</title>
     <meta name="description" content="">
     <link rel="stylesheet" href="assets/css/plugins/plugins.css">
     <link rel="stylesheet" href="assets/css/plugins/magnifying-popup.css">
@@ -48,7 +45,6 @@ $estudios = $data['records'] ?? [];
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="style.css">
     <meta name="theme-color" content="#e4a39d">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -57,8 +53,7 @@ $estudios = $data['records'] ?? [];
 <body>
 
     <!-- header area start -->
-    <!-- header area start -->
-    <header class="header-one  header--sticky">
+    <header class="header-one header--sticky">
         <div class="header-top-area">
             <div class="container-full-header">
                 <div class="col-lg-12">
@@ -107,29 +102,29 @@ $estudios = $data['records'] ?? [];
                                                         <div class="row pl--30 pt--30">
                                                             <div class="col-lg-3">
                                                                 <ul class="mega-menu-item">
-                                                                    <li><a href="#">Colposcopía</a></li>
-                                                                    <li><a href="#">Densitometría</a></li>
+                                                                    <li><a href="categoria.php?categoria=Colposcopia">Colposcopía</a></li>
+                                                                    <li><a href="categoria.php?categoria=Densitomatria">Densitometría</a></li>
                                                                     <li><a href="#">Especialidades</a></li>
                                                                 </ul>
                                                             </div>
                                                             <div class="col-lg-3">
                                                                 <ul class="mega-menu-item">
-                                                                    <li><a href="#">Laboratorio</a></li>
+                                                                    <li><a href="categoria.php?categoria=Laboratorio">Laboratorio</a></li>
                                                                     <li><a href="medicos-especialistas" style="color:#ef5834;">Médicos especialistas</a></li>
-                                                                    <li><a href="#">Nutrición</a></li>
+                                                                    <li><a href="categoria.php?categoria=Nutrición">Nutrición</a></li>
                                                                 </ul>
                                                             </div>
                                                             <div class="col-lg-3">
                                                                 <ul class="mega-menu-item">
-                                                                    <li><a href="#">Papanicolao</a></li>
-                                                                    <li><a href="rayosx">Rayos X</a></li>
-                                                                    <li><a href="#">Resonancia Magnética</a></li>
+                                                                    <li><a href="categoria.php?categoria=Papanicolaou">Papanicolaou</a></li>
+                                                                    <li><a href="categoria.php?categoria=Rayos X">Rayos X</a></li>
+                                                                    <li><a href="categoria.php?categoria=Resonancia Magnetica">Resonancia Magnética</a></li>
                                                                 </ul>
                                                             </div>
                                                             <div class="col-lg-3">
                                                                 <ul class="mega-menu-item">
-                                                                    <li><a href="#">Tomografía</a></li>
-                                                                    <li><a href="#">Ultrasonido</a></li>
+                                                                    <li><a href="categoria.php?categoria=Tomografía Computarizada">Tomografía</a></li>
+                                                                    <li><a href="categoria.php?categoria=Ultrasonido">Ultrasonido</a></li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -174,82 +169,82 @@ $estudios = $data['records'] ?? [];
         </div>
     </header>
     <!-- header area end -->
-    <!-- header area end -->
 
- <!-- service details area start -->
-<div class="service-details rts-section-gap">
-  <div class="container">
-    <div class="row">
-      <!-- Columna izquierda: estudios -->
-      <div class="col-lg-9">
-        <h1 class="titulo-categoria"><?= htmlspecialchars($categoria) ?></h1>
-        <?php if (empty($estudios)): ?>
-          <p>No hay estudios disponibles en esta categoría.</p>
-        <?php else: ?>
-          <div class="grid-estudios">
-            <?php foreach ($estudios as $registro):
-              $f = $registro['fields'] ?? [];
-              $nombre    = $f['Nombre del estudio'] ?? 'Sin título';
-              $descripcionRaw = $f['Descripción'] ?? 'Sin descripción';
-              $descripcion    = is_array($descripcionRaw) ? implode(" ", $descripcionRaw) : $descripcionRaw;
-              $slug      = $f['Slug'] ?? '';
-              $imagenUrl = isset($f['Imagen'][0]['url']) ? $f['Imagen'][0]['url'] : 'assets/images/default.jpg';
-            ?>
-            <div class="tarjeta-estudio">
-              <img src="<?= $imagenUrl ?>" alt="<?= htmlspecialchars($nombre) ?>" class="imagen-estudio">
-              <h3 class="nombre-estudio"><?= htmlspecialchars($nombre) ?></h3>
-              <p class="descripcion-estudio"><?= htmlspecialchars($descripcion) ?></p>
-              <a href="/Humanismo_Vivo/estudio.php?slug=<?= urlencode($slug) ?>" class="btn-ver">Ver más detalles</a>
-            </div>
-            <?php endforeach; ?>
-          </div>
-        <?php endif; ?>
-      </div>
+    <!-- service details area start -->
+    <div class="service-details rts-section-gap">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9 pr--40 pr_md--10 pr_sm--15">
+                    <div class="service-details-left-wrapper">
+                        <div class="thumbnail-large-service">
+                            <h1 class="titulo-categoria"><?= htmlspecialchars($categoria) ?></h1>
+                            <?php if (empty($estudios)): ?>
+                                <p>No hay estudios disponibles en esta categoría.</p>
+                            <?php else: ?>
+                                <div class="grid-estudios">
+                                    <?php foreach ($estudios as $registro):
+                                        $f = $registro['fields'] ?? [];
+                                        $nombre    = $f['Nombre del estudio'] ?? 'Sin título';
+                                        $descripcionRaw = $f['Descripción'] ?? 'Sin descripción';
+                                        $descripcion    = is_array($descripcionRaw) ? implode(" ", $descripcionRaw) : $descripcionRaw;
+                                        $precio = $f['Precio'] ?? 'No disponible';
+                                        $slug      = $f['Slug'] ?? '';
+                                        $imagenUrl = isset($f['Imagen'][0]['url']) ? $f['Imagen'][0]['url'] : 'assets/images/default.jpg';
+                                    ?>
+                                    <div class="tarjeta-estudio">
+                                        <h3 class="nombre-estudio"><?= htmlspecialchars($nombre) ?></h3>
+                                        <p class="descripcion-estudio"><?= htmlspecialchars($descripcion) ?></p>
+                                        <p class="precio-estudio">$<?= htmlspecialchars($precio) ?></p>
+                                        <a href="estudio.php?slug=<?= urlencode($slug) ?>" class="btn-ver">Ver más detalles</a>
+                                    </div>
+                                    <?php endforeach; ?>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
 
-      <!-- Columna derecha: recomendaciones y extras -->
-      <div class="col-lg-3">
-        <div class="single-rightsidebar-single">
-          <div class="doctor-title-table">
-            <div class="top">
-              <h5 class="title">Recomendaciones previas</h5>
-              <p class="disc">
-                Antes de realizarse cualquier estudio de laboratorio, se recomienda acudir con una identificación oficial, llegar con unos minutos de anticipación y seguir las indicaciones específicas de su médico.
-              </p>
-              <a href="#" class="rts-btn btn-primary btn-border">Comprar ahora</a><br>
-              <a href="#" class="rts-btn btn-primary btn-border" style="border-color: white;border-style: solid;border-width: 1px;background-color: transparent!important;">Agregar al carrito</a>
-            </div>
-            <div class="bottom">
-              <h5 class="title">Disponibilidad</h5>
-              <div class="single-table pt--0">
-                <span>Lun - Vie</span>
-                <span>8:00 - 20:00 hrs</span>
-              </div>
-              <div class="single-table">
-                <span>Sáb y Dom</span>
-                <span>8:00 - 14:00hrs</span>
-              </div>
-            </div>
-          </div>
-        </div>
+                <!-- Columna derecha: recomendaciones y extras -->
+                <div class="col-lg-3">
+                    <div class="single-rightsidebar-single">
+                        <div class="doctor-title-table">
+                            <div class="top">
+                                <h5 class="title">Recomendaciones previas</h5>
+                                <p class="disc">
+                                    Antes de realizarse cualquier estudio de laboratorio, se recomienda acudir con una identificación oficial, llegar con unos minutos de anticipación y seguir las indicaciones específicas de su médico.
+                                </p>
+                                <a href="#" class="rts-btn btn-primary btn-border">Comprar ahora</a><br>
+                                <a href="#" class="rts-btn btn-primary btn-border" style="border-color: white;border-style: solid;border-width: 1px;background-color: transparent!important;">Agregar al carrito</a>
+                            </div>
+                            <div class="bottom">
+                                <h5 class="title">Disponibilidad</h5>
+                                <div class="single-table pt--0">
+                                    <span>Lun - Vie</span>
+                                    <span>8:00 - 20:00 hrs</span>
+                                </div>
+                                <div class="single-table">
+                                    <span>Sáb y Dom</span>
+                                    <span>8:00 - 14:00hrs</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-        <div class="single-rightsidebar-single">
-          <div class="thumbnail-image-right-cardio">
-            <img src="assets/images/14.png" alt="service" style="border-radius: 20px;">
-            <div class="inner">
-              <h2 class="title">Confía en<br>nuestros<br> expertos</h2>
-              <a href="#" class="rts-btn btn-primary btn-white">¿Dudas?</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> 
-  </div> 
-</div>
-<!-- service details area end -->
+                    <div class="single-rightsidebar-single">
+                        <div class="thumbnail-image-right-cardio">
+                            <img src="assets/images/14.png" alt="service" style="border-radius: 20px;">
+                            <div class="inner">
+                                <h2 class="title">Confía en<br>nuestros<br> expertos</h2>
+                                <a href="#" class="rts-btn btn-primary btn-white">¿Dudas?</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div> 
+    </div>
+    <!-- service details area end -->
 
-
-
- <!-- header area start -->
     <!-- rts footer area start -->
     <div class="rts-footer-area footer-bg pt--25 pt_sm--50 pb--25">
         <div class="container">
@@ -288,7 +283,6 @@ $estudios = $data['records'] ?? [];
         </div>
     </div>
     <!-- rts footer area end -->
-    <!-- header area end -->
 
     <!-- header style two -->
     <div id="side-bar" class="side-bar header-two">
@@ -304,22 +298,21 @@ $estudios = $data['records'] ?? [];
                     <li class="has-droupdown">
                         <a href="#" class="main">Servicios</a>
                         <ul class="submenu mm-collapse">
-                            <li><a href="#">Colposcopía</a></li>
-                            <li><a href="#">Densitometría</a></li>
+                            <li><a href="categoria.php?categoria=Colposcopia">Colposcopía</a></li>         
+                            <li><a href="categoria.php?categoria=Densitomatria">Densitometría</a></li>
                             <li><a href="#">Especialidades</a></li>
-                            <li><a href="#">Laboratorio</a></li>
+                            <li><a href="categoria.php?categoria=Laboratorio">Laboratorio</a></li>
                             <li><a href="medicos-especialistas" style="color:#ef5834;">Médicos especialistas</a></li>
-                            <li><a href="#">Nutrición</a></li>
-                            <li><a href="#">Papanicolao</a></li>
-                            <li><a href="rayosx">Rayos X</a></li>
-                            <li><a href="#">Resonancia Magnética</a></li>
-                            <li><a href="#">Tomografía</a></li>
-                            <li><a href="#">Ultrasonido</a></li>
+                            <li><a href="categoria.php?categoria=Nutrición">Nutrición</a></li>
+                            <li><a href="categoria.php?categoria=Papanicolaou">Papanicolaou</a></li>
+                            <li><a href="categoria.php?categoria=Rayos X">Rayos X</a></li>
+                            <li><a href="categoria.php?categoria=Resonancia Magnetica">Resonancia Magnética</a></li>
+                            <li><a href="categoria.php?categoria=Tomografía Computarizada">Tomografía</a></li>
+                            <li><a href="categoria.php?categoria=Ultrasonido">Ultrasonido</a></li>
                         </ul>
                     </li>
                 </ul>
             </nav>
-
         </div>
         <!-- mobile menu area end -->
     </div>

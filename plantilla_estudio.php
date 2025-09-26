@@ -15,7 +15,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="style.css">
     <meta name="theme-color" content="#e4a39d">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -75,29 +74,28 @@
                                                         <div class="row pl--30 pt--30">
                                                             <div class="col-lg-3">
                                                                 <ul class="mega-menu-item">
-                                                                    <li><a href="#">Colposcopía</a></li>
-                                                                    <li><a href="#">Densitometría</a></li>
-                                                                    <li><a href="#">Especialidades</a></li>
+                                                                    <li><a href="categoria.php?categoria=Colposcopia">Colposcopía</a></li>
+                                                                    <li><a href="categoria.php?categoria=Densitomatria">Densitometría</a></li>                                                                   								    <li><a href="#">Especialidades</a></li>
                                                                 </ul>
                                                             </div>
                                                             <div class="col-lg-3">
                                                                 <ul class="mega-menu-item">
-                                                                    <li><a href="#">Laboratorio</a></li>
+                                                                    <li><a href="categoria.php?categoria=Laboratorio">Laboratorio</a></li>
                                                                     <li><a href="medicos-especialistas" style="color:#ef5834;">Médicos especialistas</a></li>
-                                                                    <li><a href="#">Nutrición</a></li>
+                                                                    <li><a href="categoria.php?categoria=Nutrición">Nutrición</a></li>
                                                                 </ul>
                                                             </div>
                                                             <div class="col-lg-3">
                                                                 <ul class="mega-menu-item">
-                                                                    <li><a href="#">Papanicolao</a></li>
-                                                                    <li><a href="rayosx">Rayos X</a></li>
-                                                                    <li><a href="#">Resonancia Magnética</a></li>
+                                                                    <li><a href="categoria.php?categoria=Papanicolaou">Papanicolaou</a></li>
+                                                                    <li><a href="categoria.php?categoria=Rayos X">Rayos X</a></li>
+                                                                    <li><a href="categoria.php?categoria=Resonancia Magnetica">Resonancia Magnética</a></li>
                                                                 </ul>
                                                             </div>
                                                             <div class="col-lg-3">
                                                                 <ul class="mega-menu-item">
-                                                                    <li><a href="#">Tomografía</a></li>
-                                                                    <li><a href="#">Ultrasonido</a></li>
+                                                                    <li><a href="categoria.php?categoria=Tomografía Computarizada">Tomografía</a></li>
+                                                                    <li><a href="categoria.php?categoria=Ultrasonido">Ultrasonido</a></li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -264,17 +262,17 @@
                     <li class="has-droupdown">
                         <a href="#" class="main">Servicios</a>
                         <ul class="submenu mm-collapse">
-                            <li><a href="#">Colposcopía</a></li>
-                            <li><a href="#">Densitometría</a></li>
+                            <li><a href="categoria.php?categoria=Colposcopia">Colposcopía</a></li>         
+                            <li><a href="categoria.php?categoria=Densitomatria">Densitometría</a></li>
                             <li><a href="#">Especialidades</a></li>
-                            <li><a href="#">Laboratorio</a></li>
+                            <li><a href="categoria.php?categoria=Laboratorio">Laboratorio</a></li>
                             <li><a href="medicos-especialistas" style="color:#ef5834;">Médicos especialistas</a></li>
-                            <li><a href="#">Nutrición</a></li>
-                            <li><a href="#">Papanicolao</a></li>
-                            <li><a href="rayosx">Rayos X</a></li>
-                            <li><a href="#">Resonancia Magnética</a></li>
-                            <li><a href="#">Tomografía</a></li>
-                            <li><a href="#">Ultrasonido</a></li>
+                            <li><a href="categoria.php?categoria=Nutrición">Nutrición</a></li>
+                            <li><a href="categoria.php?categoria=Papanicolaou">Papanicolao</a></li>
+                            <li><a href="categoria.php?categoria=Rayos X">Rayos X</a></li>
+                            <li><a href="categoria.php?categoria=Resonancia Magnetica">Resonancia Magnética</a></li>
+                            <li><a href="categoria.php?categoria=Tomografía Computarizada">Tomografía</a></li>
+                            <li><a href="categoria.php?categoria=Ultrasonido">Ultrasonido</a></li>
                         </ul>
                     </li>
                 </ul>
